@@ -1,0 +1,15 @@
+# Setting\Locale Related APIs
+extend type Query {
+    locales: [Locale!]! @paginate(type: "paginator" defaultCount:10 model: "Webkul\\Core\\Models\\Locale")
+    locale(id: ID @eq): Locale! @find(model: "Webkul\\Core\\Models\\Locale")
+}
+
+type Locale {
+    id: ID!
+    name: String!
+    code: String!
+    direction: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    success: String
+}

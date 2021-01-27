@@ -1,0 +1,16 @@
+# Setting\Currency Related APIs
+extend type Query {
+    currencies: [Currency!]! @paginate(type: "paginator" defaultCount:10 model: "Webkul\\Core\\Models\\Currency")
+    currency(id: ID @eq): Currency! @find(model: "Webkul\\Core\\Models\\Currency")
+}
+
+type Currency {
+    id: ID!
+    name: String!
+    code: String!
+    symbol: String!
+    exchange_rate: ExchangeRate @hasOne
+    created_at: DateTime!
+    updated_at: DateTime!
+    success: String
+}

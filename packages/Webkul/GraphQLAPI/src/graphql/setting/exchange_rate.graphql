@@ -1,0 +1,14 @@
+# Setting\ExchangeRate Related APIs
+extend type Query {
+    exchangeRates: [ExchangeRate!]! @all(model: "Webkul\\Core\\Models\\CurrencyExchangeRate")
+    exchangeRate(id: ID @eq): ExchangeRate! @find(model: "Webkul\\Core\\Models\\CurrencyExchangeRate")
+}
+
+type ExchangeRate {
+    id: ID!
+    target_currency: Int!
+    rate: Float!
+    created_at: DateTime!
+    updated_at: DateTime!
+    success: String
+}

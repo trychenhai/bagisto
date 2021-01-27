@@ -1,0 +1,75 @@
+# Catalog\Category Related APIs
+type Query {
+    attributes: [Attribute!]! @field(resolver: "Webkul\\GraphQLAPI\\Queries\\FilterableAttributesQuery@getFilterableAttributes")
+    categories: [Category!]! @paginate(type: "paginator" defaultCount:10 model: "Webkul\\Category\\Models\\Category")
+    category(id: ID @eq): Category! @find(model: "Webkul\\Category\\Models\\Category")
+}
+
+type Attribute {
+    id: ID!
+    code: String!
+    admin_name: String!
+    type: String!
+    position: Int!
+    is_required: Int!
+    is_unique: Int!
+    validation: String
+    value_per_locale: Int!
+    value_per_channel: Int!
+    is_filterable: Int!
+    is_configurable: Int!
+    is_visible_on_front: Int!
+    is_user_defined: Int!
+    swatch_type: String
+    use_in_flat: Int!
+    is_comparable: Int!
+}
+
+type FilterableAttribute {
+    id: ID!
+    code: String!
+    admin_name: String!
+    type: String!
+    validation: String!
+    position: Int!
+    is_filterable: Int!
+    category: Category! @belongsTo(relation: "category")
+}
+
+type Translation {
+    id: ID!
+    name: String!
+    slug: String!
+    description: String!
+    meta_title: String
+    meta_description: String
+    meta_keywords: String
+    category_id: ID!
+    locale: String!
+    locale_id: ID!
+    url_path: String!
+    category: Category! @belongsTo(relation: "category")
+}
+
+type Category {
+    id: ID!
+    name: String!
+    description: String!
+    slug: String!
+    url_path: String!
+    image: String
+    image_url: String
+    meta_title: String
+    meta_description: String
+    meta_keywords: String
+    position: Int!
+    status: Boolean!
+    display_mode: String!
+    parent_id: ID
+    additional: String
+    filterableAttributes: [FilterableAttribute!]! @hasMany
+    translations: [Translation!]! @hasMany
+    created_at: DateTime!
+    updated_at: DateTime!
+    success: String
+}
