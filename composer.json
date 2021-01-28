@@ -112,7 +112,7 @@
         "Webkul\\SocialLogin\\": "packages/Webkul/SocialLogin/src",
         "Webkul\\DebugBar\\": "packages/Webkul/DebugBar/src",
         "Webkul\\Marketing\\": "packages/Webkul/Marketing/src",
-        "Webkul\\GraphQLAPI\\": "packages/Webkul/GraphQLAPI/src"        
+        "Webkul\\GraphQLAPI\\": "packages/Webkul/GraphQLAPI"        
       }
     },
     "autoload-dev": {
